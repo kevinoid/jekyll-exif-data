@@ -7,6 +7,7 @@ module Jekyll
       # Read exif using exifr
       def exif(input, exiftag)
         exif = EXIFR::JPEG::new(input)
+        return exif if not exiftag
         if(exiftag == "gps?")
           return (exif.send('gps') != nil)
         end
